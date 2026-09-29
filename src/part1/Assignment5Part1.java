@@ -1,7 +1,7 @@
 package part1;
 
 import java.util.Scanner;
-public class Assigтment5Part1 {
+public class Assignment5Part1 {
 
     public static double multiply (double a,double b){
     double c = a * b;
