@@ -3,18 +3,16 @@ package part2;
 import java.util.Scanner;
 public class Assignment5Part2 {
 
-    public static void Shareholders_assistant ( int current_shares,float purchase_price, float market_price, float available_funds){
-//There are only three market states: the current price is higher, the current price is lower, or they are the same.
-        if (worth_buying(purchase_price,market_price,available_funds)!=0||available_funds>10){//If the current price is lower, we must buy—but only if we have the funds and it is profitable. A special function checks for profitability. And the condition in the `if` statement is that we can't buy anything if we have less than 10 money.
-            if(market_price<purchase_price) {
-                System.out.print ("Buy "+ worth_buying(purchase_price,market_price,available_funds) + " shares\n");
-            }else System.out.printf("Hold\n");
-            }else if (market_price==purchase_price){//The simplest option—to hold on in any case.
-                System.out.printf("Hold\n");
-            }else if (market_price>purchase_price){
-            if (worth_selling(current_shares, purchase_price,market_price)!=0){
-                System.out.print ("Sell "+ worth_selling(current_shares, purchase_price,market_price) + " shares\n");
-            }else System.out.printf("Hold\n");
+    public static void Shareholders_assistant(int current_shares, float purchase_price, float market_price, float available_funds) {
+        int sharesToBuy = worth_buying(purchase_price, market_price, available_funds);
+        int sharesToSell = worth_selling(current_shares, purchase_price, market_price);
+
+        if (market_price < purchase_price && sharesToBuy > 0) {
+            System.out.printf("Buy %d shares\n", sharesToBuy);
+        } else if (market_price > purchase_price && sharesToSell > 0) {
+            System.out.printf("Sell %d shares\n", sharesToSell);
+        } else {
+            System.out.printf("Hold \n");
         }
     }
     public static int worth_buying(float purchase_price, float market_price, float available_funds){//A function to evaluate the profitability of a purchase, returning zero if it is not profitable, or the quantity if it is.
