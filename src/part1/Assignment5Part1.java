@@ -8,6 +8,10 @@ public class Assignment5Part1 {
     return c;
     }
     public static double dividing (double a,double b){
+        if (b == 0) {
+            System.out.println("Error: Division by zero is undefined!");
+            return 0.0;
+        }
         double c = a / b;
         return c;
     }
@@ -29,6 +33,7 @@ public class Assignment5Part1 {
         char operation = cin.next().charAt(0);
         System.out.printf("Enter second operand: \n");
         double second_operand = cin.nextDouble();
+
         double result = switch (operation){  //A switch-case that checks a character and calls the corresponding function
             case '*' -> multiply(first_operand,second_operand);
             case '/' -> dividing(first_operand,second_operand);
